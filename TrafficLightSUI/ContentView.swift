@@ -16,8 +16,7 @@ struct ContentView: View {
     @State private var yellowOpacity: CGFloat = 0.3
     @State private var greenOpacity: CGFloat = 0.3
     
-    private let lightIsOn: CGFloat = 1
-    private let lightIsOff: CGFloat = 0.3
+    
     
     var body: some View {
         ZStack {
@@ -31,7 +30,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button(action: { turnTrafficLight() }) {
+                Button(action: turnTrafficLight) {
                     Text(buttonName)
                         .font(.largeTitle)
                         .tint(.white)
@@ -46,6 +45,8 @@ struct ContentView: View {
     }
     
     private func turnTrafficLight() {
+        let lightIsOn: CGFloat = 1
+        let lightIsOff: CGFloat = 0.3
         colorCounter = colorCounter >= 3 ? 0 : colorCounter
         buttonName = "NEXT"
         switch colorCounter {
