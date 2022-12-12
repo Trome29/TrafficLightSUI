@@ -16,6 +16,24 @@ struct ContentView: View {
     @State private var yellowOpacity = 0.3
     @State private var greenOpacity = 0.3
     
+    var body: some View {
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
+            VStack {
+                LightCircleView(color: .red, opacity: redOpacity)
+                LightCircleView(color: .yellow, opacity: yellowOpacity)
+                    .padding()
+                LightCircleView(color: .green, opacity: greenOpacity)
+                
+                Spacer()
+
+                StartButtonView(title: "START", action: turnTrafficLight)
+            }
+            .padding()
+        }
+    }
+    
     private func turnTrafficLight() {
         let lightIsOn: CGFloat = 1
         let lightIsOff: CGFloat = 0.3
@@ -34,24 +52,6 @@ struct ContentView: View {
             greenOpacity = lightIsOn
             yellowOpacity = lightIsOff
             colorCounter = 0
-        }
-    }
-    
-    var body: some View {
-        ZStack {
-            Color.black
-                .ignoresSafeArea()
-            VStack {
-                LightCircleView(color: .red, opacity: redOpacity)
-                LightCircleView(color: .yellow, opacity: yellowOpacity)
-                    .padding()
-                LightCircleView(color: .green, opacity: greenOpacity)
-                
-                Spacer()
-
-                StartButtonView(title: "START", action: turnTrafficLight)
-            }
-            .padding()
         }
     }
 }
