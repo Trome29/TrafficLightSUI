@@ -28,7 +28,9 @@ struct ContentView: View {
                 
                 Spacer()
 
-                StartButtonView(title: "START", action: turnTrafficLight)
+                StartButtonView(title: buttonName) {
+                    turnTrafficLight()
+                }
             }
             .padding()
         }
